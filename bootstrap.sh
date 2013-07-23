@@ -6,7 +6,7 @@
 # Distributed under terms of the MIT license.
 
 # Basic Shell enhancements
-sudo apt-get install curl ngrep tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev cowsay cplay
+sudo apt-get install zsh curl ngrep tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev cowsay cplay
 
 # LAMP, the bases
 sudo apt-get install apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev phpmyadmin mysql-server
@@ -61,6 +61,7 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
 
+# personal conf
 if [ ! -d ~/Bin ]
     then
         cd ~/
@@ -72,4 +73,12 @@ if [ ! -d ~/dotfiles ]
         cd ~/
         git clone https://github.com/ronanguilloux/dotfiles.git
         . ./dotfiles/install.sh
+        mv .bashrc .bashrc-dist && ln -s dotfiles/.bashrc .bashrc
 fi
+
+# Set enahnced ZSH as default
+if [ ! -d ~/.oh-my-zsh ]
+    then
+        curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+fi
+chsh -s /bin/zsh
