@@ -5,8 +5,15 @@
 #
 # Distributed under terms of the MIT license.
 
+# Update apt sources
+sudo apt-get update
+
+# French keyboard
+sudo locale-gen fr_FR.UTF-8
+sudo loadkeys fr
+
 # Basic Shell enhancements
-sudo apt-get install zsh curl ngrep tree htop fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev cowsay cplay
+sudo apt-get install zsh curl ngrep tree htop fortunes fortunes-fr vrms linuxlogo sysstat di discus pydf hardinfo lynx ack-grep pandoc most exuberant-ctags linux-headers-generic build-essential manpages-fr manpages-fr-extra manpages-dev cowsay cplay
 
 # LAMP, the bases
 sudo apt-get install apache2 apache2-mpm-prefork libapache2-mod-php5 apache2-utils php5 php5-dev phpmyadmin mysql-server
@@ -55,7 +62,6 @@ sudo a2enmod setenvif
 sudo service apache2 restart
 
 # NodeJs
-sudo apt-get update
 sudo apt-get install python-software-properties python g++ make
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
@@ -76,9 +82,13 @@ if [ ! -d ~/dotfiles ]
         mv .bashrc .bashrc-dist && ln -s dotfiles/.bashrc .bashrc
 fi
 
-# Set enahnced ZSH as default
+# Set enhanced ZSH as default
 if [ ! -d ~/.oh-my-zsh ]
     then
         curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 chsh -s /bin/zsh
+echo "TODO : Configure php.ini (both CLI & Apache2)"
+echo "TODO : Add  TZ=\"Europe/Paris\" to /etc/environment"
+echo "TODO : Add a default ServerName as localhost to Apache2"
+echo "TODO : Add /Apps/sites-enabled/ to /etc/apache2/apache2.conf file"

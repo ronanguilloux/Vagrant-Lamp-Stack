@@ -37,7 +37,16 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "Apps", "/Apps", :owner=> 'vagrant', :group=>'www-data', :extra => 'dmode=775,fmode=775'
+  config.vm.synced_folder "~/Workspace/Lamp/Apps", "/Apps", :owner=> 'vagrant', :group=>'www-data', :extra => 'dmode=775,fmode=775'
+
+  # Set the Timezone to something useful
+  #config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+  
+  # Reconfiguring sources
+  config.vm.provision :shell, :inline => "sudo cp /vagrant/sources.list /etc/apt/"
+
+  # Update the server
+  config.vm.provision :shell, :inline => "apt-get update --fix-missing"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
