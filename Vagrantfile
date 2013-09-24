@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :inline => "sudo cp /vagrant/sources.list /etc/apt/"
 
   # Update the server
-  config.vm.provision :shell, :inline => "apt-get update --fix-missing"
+  #config.vm.provision :shell, :inline => "apt-get update --fix-missing"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
