@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntuPrecise64"
+  config.vm.box = "ubuntuRaring64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -41,7 +41,10 @@ Vagrant.configure("2") do |config|
 
   # Set the Timezone to something useful
   #config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
-  
+
+  # avoid "stdin: is not a tty" mesg. See http://goo.gl/Zjs8VT
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
   # Reconfiguring sources
   config.vm.provision :shell, :inline => "sudo cp /vagrant/sources.list /etc/apt/"
 
