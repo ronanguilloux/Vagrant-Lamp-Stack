@@ -48,6 +48,13 @@ Vagrant.configure("2") do |config|
   # Reconfiguring sources
   config.vm.provision :shell, :inline => "sudo cp /vagrant/sources.list /etc/apt/"
 
+ # Use VBoxManage to change memory:
+  config.vm.provider :virtualbox do |vb|
+    vb.gui = false
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+
   # Update the server
   #config.vm.provision :shell, :inline => "apt-get update --fix-missing"
 
