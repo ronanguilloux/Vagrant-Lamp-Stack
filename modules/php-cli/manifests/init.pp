@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+
 class php-cli::install {
     package { 'php5-cli':
         ensure => installed

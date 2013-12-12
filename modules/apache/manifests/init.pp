@@ -1,8 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 class apache::install {
-    package { 'apache2-mpm-prefork':
-        ensure => installed,
-    }
-    package { 'apache2-utils':
+    package { ['apache2-mpm-prefork', 'apache2-utils']:
         ensure => installed,
     }
 }

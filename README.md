@@ -1,4 +1,6 @@
 vagrant-ubuntu64
 ================
 
-Vagrant's configuration &amp; opiniated bootstrap for ubuntu64 raring server
+Puppet based Vagrant's configuration for ubuntu64 raring server
+
+`bootstrap.sh` is conserved for documentation purpose only. 
