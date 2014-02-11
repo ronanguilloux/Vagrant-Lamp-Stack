@@ -1,5 +1,9 @@
 stage { 'prepare': before => Stage['main'] }
 
+if $virtual == 'virtualbox' and $fqdn == '' {
+    $fqdn = 'localhost'
+}
+
 class {
     'ubuntu':  stage => prepare;
     'apache':  stage => main;

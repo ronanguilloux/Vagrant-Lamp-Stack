@@ -3,9 +3,9 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntuRaring64"
-  config.vm.box_url = "http://cloud-images.ubuntu.com/raring/current/raring-server-cloudimg-vagrant-amd64-disk1.box"
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   config.vm.network :forwarded_port, guest: 80, host: 8080
-  config.vm.synced_folder "~/Workspace/Apps", "/Apps", :owner=> 'vagrant', :group=>'www-data', :extra => 'dmode=775,fmode=775'
+  config.vm.synced_folder "~/Workspace", "/Workspace", :owner=> 'vagrant', :group=>'www-data', :mount_options => ['dmode=775,fmode=775']
   config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
   # avoid "stdin: is not a tty" mesg. See http://goo.gl/Zjs8VT
